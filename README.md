@@ -1,5 +1,11 @@
 # Hao Wu Homepage
 
+Website: https://alexander-wu.github.io/hao-wu/
+
+Repository: https://github.com/Alexander-wu/hao-wu
+
+Assets and downloads use relative URLs to support this project-site path.
+
 This is a static academic homepage that can be deployed directly on GitHub Pages, Netlify, or Vercel.
 
 ## Deploy on GitHub Pages
