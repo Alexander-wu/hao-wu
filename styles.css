@@ -305,6 +305,18 @@ html[data-theme="dark"] .theme-toggle-moon { display: inline-flex; }
   gap: 12px;
 }
 
+.profile-location {
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+  margin: 0.45rem 0 0;
+  color: var(--text-soft);
+  font-size: 0.92rem;
+  line-height: 1.4;
+}
+
+.profile-location svg { flex-shrink: 0; }
+
 .link-grid {
   display: inline-flex;
   flex-wrap: nowrap;
@@ -1340,7 +1352,7 @@ html[data-theme="dark"] .news-item:hover {
     gap: 12px;
   }
   .hero-main { display: contents; }
-  .hero-main h1 { grid-area: name; }
+  .profile-heading { grid-area: name; }
   .hero-main .name-cn { display: inline-block; white-space: nowrap; }
   .hero-main .link-grid { grid-area: links; flex-wrap: wrap; }
   .hero-main .citation-counter { grid-area: citations; }
