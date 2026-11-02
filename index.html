@@ -1,35 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hao Wu</title>
+  <title>Hao Wu | World Models & Scientific Machine Learning</title>
   <link rel="canonical" href="https://alexander-wu.github.io/hao-wu/">
   <meta
     name="description"
     content="Research interests of Hao Wu: robot video generation and world models, multimodal large language models, and agent systems."
   >
-  <link rel="stylesheet" href="styles.css?v=research-intro-20260929">
-  <script>
-    // Apply saved theme before paint to avoid FOUC
-    (function () {
-      try {
-        var t = localStorage.getItem('theme');
-        if (t === 'dark' || (!t && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-          document.documentElement.setAttribute('data-theme', 'dark');
-        }
-      } catch (e) {}
-    })();
-  </script>
+  <link rel="stylesheet" href="styles.css">
+  
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <script>try { if(localStorage.getItem('hao-homepage-theme') === 'light') document.documentElement.setAttribute('data-theme','light'); } catch(e) {}</script>
+  <script src="publications.js" defer></script><script src="app.js" defer></script>
 </head>
-<body>
+<body><a class="skip-link" href="#research">Skip to publications</a>
   <header class="site-header">
     <div class="container header-inner">
-      <div class="site-title">Hao Wu</div>
+      <a href="#about" class="site-title">Hao Wu</a>
       <nav class="site-nav">
         <a href="#about">Home</a>
-        <a href="#publications">Publications</a>
-        <a href="#awards">Awards</a>
+        <a href="#research">Publications</a>
+        <a href="#experience">Experience</a>
         <a href="#service">Service</a>
         <a href="#news">News</a>
         <a href="#contact">Contact</a>
@@ -55,213 +48,177 @@
       <div class="hero-panel">
         <div class="hero-top">
           <div class="hero-main">
-            <h1>Hao Wu</h1>
+            <h1>Hao Wu <span class="name-cn" lang="zh">吴昊</span></h1>
 
             <div class="link-grid">
-              <a class="info-link" href="https://scholar.google.com/citations?user=HdXMhfcAAAAJ&amp;hl=en" target="_blank" rel="noreferrer" aria-label="Google Scholar" title="Google Scholar">
+              <a class="info-link" href="https://www.linkedin.com/in/hao-wu-a31986316/" target="_blank" rel="noreferrer" aria-label="LinkedIn" title="LinkedIn">
                 <span class="info-icon" aria-hidden="true">
-                  <img src="Image/google-scholar.png" alt="">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="24" height="24" rx="3" fill="#0a66c2"/>
+                    <g fill="#fff">
+                      <circle cx="5.5" cy="6" r="1.8"/>
+                      <path d="M4 9h3v11H4zm5 0h3v1.5c.8-1.2 2-1.8 3.5-1.8 3.3 0 4.5 2.1 4.5 5.2V20h-3v-5.5c0-1.7-.4-2.9-2.1-2.9-1.8 0-2.9 1.2-2.9 3V20H9z"/>
+                    </g>
+                  </svg>
                 </span>
               </a>
-              <a class="info-link" href="mailto:wuhao2022@mail.ustc.edu.cn" aria-label="Email" title="Email">
+              <a class="info-link" href="https://scholar.google.com/citations?user=HdXMhfcAAAAJ&amp;hl=en" target="_blank" rel="noreferrer" aria-label="Google Scholar" title="Google Scholar">
                 <span class="info-icon" aria-hidden="true">
-                  <img src="Image/email-icon.jpeg" alt="">
+                  <img src="assets/scholar-icon.png" alt="">
+                </span>
+              </a>
+              <a class="info-link" href="mailto:easylearninghao@gmail.com" aria-label="Email" title="Email">
+                <span class="info-icon" aria-hidden="true">
+                  <img src="assets/email-icon.jpeg" alt="">
                 </span>
               </a>
               <a class="info-link" href="https://github.com/Alexander-wu" target="_blank" rel="noreferrer" aria-label="GitHub" title="GitHub">
                 <span class="info-icon" aria-hidden="true">
-                  <img src="Image/github.jpg" alt="">
+                  <img src="assets/github-icon.jpg" alt="">
                 </span>
               </a>
-              <button class="info-link wechat-trigger" id="wechat-trigger" type="button" aria-label="Show WeChat QR code" title="WeChat">
-                <span class="info-icon info-icon-wechat" aria-hidden="true">
-                  <img src="Image/wechat.svg" alt="">
-                </span>
-              </button>
             </div>
-            <a class="citation-counter" href="https://scholar.google.com/citations?user=HdXMhfcAAAAJ&amp;hl=en" target="_blank" rel="noreferrer" title="Google Scholar citations; hover for the last successful sync">
+            <a class="citation-counter" href="https://scholar.google.com/citations?user=HdXMhfcAAAAJ&amp;hl=en" target="_blank" rel="noreferrer" title="Google Scholar snapshot · November 2026">
               <span class="citation-counter-label">Google Scholar Citations</span>
-              <strong id="scholar-citation-count" aria-live="polite">1,550</strong>
+              <strong id="scholar-citation-count" aria-live="polite">1,730</strong>
             </a>
+          </div>
+          <div class="profile-photo-wrap">
+            <img class="profile-photo" src="assets/hao-wu-portrait.png" alt="Portrait of Hao Wu" width="521" height="692">
           </div>
         </div>
 
         <div class="hero-body">
-          <p>
-            My research focuses on <strong>robot video generation and world models</strong>,
-            <strong>multimodal large language models</strong>, and <strong>agent systems</strong>.
-            I am interested in building intelligent systems that can understand, predict, and reason
-            about the physical world across modalities.
-          </p>
+          <p>I am a PhD student at <span class="bio-affiliation"><img class="bio-school-logo" src="assets/tsinghua.png" alt=""> <strong>Tsinghua University</strong></span>. I study <strong>world models</strong>, <strong>scientific machine learning</strong>, and <strong>multimodal agents</strong>. I am interested in how models predict change over time, from a robot moving an object to the flow of air and water. My recent work also explores memory, reward learning, and <button type="button" class="bio-demo-trigger" id="code-demo-trigger" aria-label="Watch the code world models demo" aria-haspopup="dialog" aria-controls="code-demo" aria-expanded="false">code world models</button>.</p>
+          <p>My 2026 first-author papers include <a href="https://alexander-wu.github.io/roboalign-r1-pages/">RoboAlign-R1</a> (<strong>NeurIPS</strong>) on reward learning for robot video prediction, <a href="https://arxiv.org/abs/2605.08935">PnP-Corrector</a> (<strong>ICML</strong>) on correcting forecasts of coupled systems, and <a href="https://doi.org/10.1145/3770855.3818015">DINO</a> (<strong>KDD</strong>) on long-term turbulence forecasting.</p>
+          <p>At the <span class="bio-affiliation"><img class="bio-logo bio-logo-ant" src="assets/ant.png" alt=""> <strong>Ant Group</strong></span> AGI Research Center, I study recursive self-improvement (RSI). I previously held research internships at
+            <span class="bio-affiliation"><img class="bio-logo bio-logo-unit bio-logo-lightspeed" src="assets/lightspeed.png" alt=""> <strong>Tencent Lightspeed Studios</strong></span>,
+            <span class="bio-affiliation"><img class="bio-logo bio-logo-unit" src="assets/jarvis-lab.png" alt=""> <strong>Tencent Jarvis Research Center</strong></span>, and
+            <span class="bio-affiliation"><img class="bio-logo bio-logo-unit" src="assets/hunyuan.png" alt=""> <strong>Tencent Hunyuan</strong></span>.</p>
+          <dl class="bio-venues" aria-label="Publication venues">
+            <div><dt>Conferences</dt><dd>NeurIPS, ICML, ICLR, KDD, ICCV, ACL, AAAI, ACM Multimedia, and ECML PKDD.</dd></div>
+            <div><dt>Journals</dt><dd>IEEE TPAMI, IEEE TKDE, IEEE TEVC, <i>Neurocomputing</i>, and <i>Geophysical Research Letters</i>.</dd></div>
+          </dl>
         </div>
       </div>
     </section>
 
     <section id="news" class="section-block">
+      <p class="collaboration-invite">I’m open to research collaborations. If you’d like to work together, please <a href="mailto:easylearninghao@gmail.com">email me</a>.</p>
       <div class="news-panel">
-        <div class="news-heading">
-          <h2>News</h2>
-          <span class="news-heading-accent" aria-hidden="true"></span>
-        </div>
+        <div class="news-heading"><h2>News</h2></div>
         <div class="news-window">
           <div class="news-list">
             <div class="news-item news-item-featured">
-              <span class="news-dot"></span>
-              <span class="news-date">2026.09</span>
-              <div class="news-text">Two papers are accepted to <strong>NeurIPS 2026</strong>: <a href="https://alexander-wu.github.io/roboalign-r1-pages/" target="_blank" rel="noreferrer">RoboAlign-R1</a> on <strong>embodied world models</strong> (<strong>first author</strong>), and <a href="https://openreview.net/forum?id=JTuJz4sg7i" target="_blank" rel="noreferrer">Tyche</a> on <strong>generative modeling</strong> (<strong>corresponding author</strong>).</div>
+              <time class="news-date" datetime="2026-10">2026.10</time>
+              <div class="news-text">We released <a href="https://www.preprints.org/manuscript/202609.2680" data-preview-figure="rsi-survey">Recursive Self-Improvement in AI: A Survey</a>. The survey examines how to test whether AI systems get better at improving themselves.</div>
             </div>
             <div class="news-item">
-              <span class="news-dot"></span>
-              <span class="news-date">2026.05</span>
-              <div class="news-text">As <strong>corresponding author</strong>, our paper <em>"Evolving Multimodal Models for Physical Dynamics: A Multi-objective Neuroevolution Approach"</em> was accepted by <strong>IEEE Transactions on Evolutionary Computation (TEVC)</strong>, a <strong>CAS JCR Tier-1 (双一区)</strong> journal. Congrats to all collaborators!</div>
+              <time class="news-date" datetime="2026-09">2026.09</time>
+              <div class="news-text">Two of our papers were accepted to <strong>NeurIPS 2026</strong>. <a href="https://alexander-wu.github.io/roboalign-r1-pages/">RoboAlign-R1</a> studies <strong>embodied world models</strong> (<strong>first author</strong>), and <a href="https://openreview.net/forum?id=JTuJz4sg7i">Tyche</a> studies <strong>generative modeling</strong> (<strong>corresponding author</strong>).</div>
             </div>
             <div class="news-item">
-              <span class="news-dot"></span>
-              <span class="news-date">2026.05</span>
-              <div class="news-text">Joined <strong>Tencent IEG, Lightspeed Studios</strong> as a <strong>Project Up (青云计划) Research Intern</strong>, working on video generation world models.</div>
+              <time class="news-date" datetime="2026-05">2026.05</time>
+              <div class="news-text"><strong>IEEE Transactions on Evolutionary Computation (TEVC)</strong> accepted our paper <em>Evolving Multimodal Models for Physical Dynamics: A Multi-objective Neuroevolution Approach</em>. I am the <strong>corresponding author</strong>. The journal is ranked CAS Tier 1 and JCR Q1 (<span lang="zh-CN">双一区</span>).</div>
             </div>
             <div class="news-item">
-              <span class="news-dot"></span>
-              <span class="news-date">2026.05</span>
-              <div class="news-text">As <strong>first author</strong>, two papers were accepted to <strong>KDD 2026 Research Track</strong>. Congrats to all collaborators!</div>
+              <time class="news-date" datetime="2026-05">2026.05</time>
+              <div class="news-text">I joined <strong>Tencent IEG, Lightspeed Studios</strong> as a research intern <strong>（Project Up <span class="program-cn" lang="zh-CN">青云计划</span>）</strong> to work on video generation for world models.</div>
             </div>
             <div class="news-item">
-              <span class="news-dot"></span>
-              <span class="news-date">2026.05</span>
-              <div class="news-text">As <strong>first author</strong>, a paper on <strong>large-scale spatio-temporal pre-training and post-training</strong> is accepted by <strong>ICML 2026</strong>. Congratulations to all!</div>
+              <time class="news-date" datetime="2026-05">2026.05</time>
+              <div class="news-text">The <strong>KDD 2026 Research Track</strong> accepted two papers on which I am <strong>first author</strong>.</div>
             </div>
             <div class="news-item">
-              <span class="news-dot"></span>
-              <span class="news-date">2026.04</span>
-              <div class="news-text">A paper on the topic of <strong>Inference-time Safety Alignment</strong> was accepted by <strong>ACL 2026</strong>.</div>
+              <time class="news-date" datetime="2026-05">2026.05</time>
+              <div class="news-text"><strong>ICML 2026</strong> accepted my <strong>first-author</strong> paper on <strong>large-scale spatiotemporal pre-training and post-training</strong>.</div>
             </div>
             <div class="news-item">
-              <span class="news-dot"></span>
-              <span class="news-date">2026.01</span>
-              <div class="news-text">Two papers were accepted to <strong>TPAMI</strong>. Congrats to all collaborators!</div>
+              <time class="news-date" datetime="2026-04">2026.04</time>
+              <div class="news-text"><strong>ACL 2026</strong> accepted our paper on <strong>inference-time safety alignment</strong>.</div>
             </div>
             <div class="news-item">
-              <span class="news-dot"></span>
-              <span class="news-date">2025.12</span>
-              <div class="news-text">Two papers were accepted to <strong>AAAI</strong> and <strong>ICLR</strong>. Congrats to all collaborators!</div>
+              <time class="news-date" datetime="2026-01">2026.01</time>
+              <div class="news-text"><strong>IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)</strong> accepted two of our papers.</div>
             </div>
             <div class="news-item">
-              <span class="news-dot"></span>
-              <span class="news-date">2025.06</span>
-              <div class="news-text">As corresponding author, one paper was accepted to <strong>ICCV</strong>. Congrats to all collaborators!</div>
+              <time class="news-date" datetime="2025-12">2025.12</time>
+              <div class="news-text">Two of our papers were accepted, one at <strong>AAAI</strong> and one at <strong>ICLR</strong>.</div>
             </div>
             <div class="news-item">
-              <span class="news-dot"></span>
-              <span class="news-date">2025.05</span>
-              <div class="news-text">As co-first author, one paper was accepted to <strong>ICML</strong>. Congrats to all collaborators!</div>
+              <time class="news-date" datetime="2025-06">2025.06</time>
+              <div class="news-text"><strong>ICCV</strong> accepted a paper on which I am <strong>corresponding author</strong>.</div>
             </div>
             <div class="news-item">
-              <span class="news-dot"></span>
-              <span class="news-date">2025.03</span>
-              <div class="news-text">As first author, one paper was accepted to <strong>KDD</strong>. Congrats to all collaborators!</div>
+              <time class="news-date" datetime="2025-05">2025.05</time>
+              <div class="news-text"><strong>ICML</strong> accepted a paper on which I am <strong>co-first author</strong>.</div>
             </div>
             <div class="news-item">
-              <span class="news-dot"></span>
-              <span class="news-date">2024.12</span>
-              <div class="news-text">As corresponding author, one paper was accepted to <strong>ICLR</strong>. Congrats to all collaborators!</div>
+              <time class="news-date" datetime="2025-03">2025.03</time>
+              <div class="news-text"><strong>KDD</strong> accepted one of my <strong>first-author</strong> papers.</div>
             </div>
             <div class="news-item">
-              <span class="news-dot"></span>
-              <span class="news-date">2024.07</span>
-              <div class="news-text">As first author or co-first author, three papers were accepted to <strong>NeurIPS</strong>. Congrats to all collaborators!</div>
+              <time class="news-date" datetime="2024-12">2024.12</time>
+              <div class="news-text"><strong>ICLR</strong> accepted a paper on which I am <strong>corresponding author</strong>.</div>
             </div>
             <div class="news-item">
-              <span class="news-dot"></span>
-              <span class="news-date">2024.05</span>
-              <div class="news-text">As first author, one paper was accepted to <strong>KDD</strong>. Congrats to all collaborators!</div>
+              <time class="news-date" datetime="2024-07">2024.07</time>
+              <div class="news-text"><strong>NeurIPS</strong> accepted three of our papers. I am <strong>first author or co-first author</strong> on all three.</div>
             </div>
             <div class="news-item">
-              <span class="news-dot"></span>
-              <span class="news-date">2024.05</span>
-              <div class="news-text">As first author, one paper was accepted to <strong>ACM MM</strong>. Congrats to all collaborators!</div>
+              <time class="news-date" datetime="2024-05">2024.05</time>
+              <div class="news-text"><strong>KDD</strong> accepted one of my <strong>first-author</strong> papers.</div>
             </div>
             <div class="news-item">
-              <span class="news-dot"></span>
-              <span class="news-date">2024.05</span>
-              <div class="news-text">As first author, one paper was accepted to <strong>ICML</strong>. Congrats to all collaborators!</div>
+              <time class="news-date" datetime="2024-05">2024.05</time>
+              <div class="news-text"><strong>ACM Multimedia (ACM MM)</strong> accepted one of my <strong>first-author</strong> papers.</div>
             </div>
             <div class="news-item">
-              <span class="news-dot"></span>
-              <span class="news-date">2023.12</span>
-              <div class="news-text">As first author, two papers were accepted to <strong>AAAI</strong>. Congrats to all collaborators!</div>
+              <time class="news-date" datetime="2024-05">2024.05</time>
+              <div class="news-text"><strong>ICML</strong> accepted one of my <strong>first-author</strong> papers.</div>
             </div>
             <div class="news-item">
-              <span class="news-dot"></span>
-              <span class="news-date">2023.07</span>
-              <div class="news-text">As co-first author, one paper was accepted to <strong>NeurIPS</strong>. Congrats to all collaborators!</div>
+              <time class="news-date" datetime="2023-12">2023.12</time>
+              <div class="news-text"><strong>AAAI</strong> accepted two of my <strong>first-author</strong> papers.</div>
+            </div>
+            <div class="news-item">
+              <time class="news-date" datetime="2023-07">2023.07</time>
+              <div class="news-text"><strong>NeurIPS</strong> accepted a paper on which I am <strong>co-first author</strong>.</div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section-block">
-      <h2>Experience</h2>
-      <div class="experience-grid">
+    <section id="experience" class="section-block"><h2>Research Experience</h2><div class="experience-grid"><article class="experience-card"><div class="experience-logo"><img src="assets/ant.png" alt="Ant Research · 蚂蚁技术研究院" class="experience-logo-single" loading="lazy"></div><div class="experience-content"><div class="experience-header"><h3>Assistant Researcher (Intern), Ant Group</h3><time class="experience-time">Starting Nov. 2026</time></div><p class="experience-meta">AGI Research Center<span class="program-cn" lang="zh-CN">（蚂蚁星- Plan A人才计划实习）</span></p><p class="experience-desc">I study recursive self-improvement (RSI) as a path toward artificial general intelligence (AGI).</p></div></article><article class="experience-card"><div class="experience-logo"><img src="assets/tencent.png" alt="Tencent" class="experience-logo-tencent" loading="lazy"><span class="experience-logo-divider" aria-hidden="true"></span><img src="assets/lightspeed.png" alt="Lightspeed Studios" class="experience-logo-unit" loading="lazy"></div><div class="experience-content"><div class="experience-header"><h3>Research Intern, Tencent IEG</h3><time class="experience-time">May – Sep. 2026</time></div><p class="experience-meta">Lightspeed Studios（Project Up <span class="program-cn" lang="zh-CN">青云计划</span>）</p><p class="experience-desc">Video world models and physically consistent interactive generation.</p></div></article>
         <article class="experience-card">
-          <div class="experience-logo" aria-label="Tencent Lightspeed Studios">
-            <img class="experience-logo-tencent" src="log/tencent-wordmark.png" alt="Tencent">
+          <div class="experience-logo">
+            <img src="assets/tencent.png" alt="Tencent" class="experience-logo-tencent" loading="lazy">
             <span class="experience-logo-divider" aria-hidden="true"></span>
-            <img class="experience-logo-unit experience-logo-lightspeed" src="log/lightspeed-studios.png" alt="Lightspeed Studios">
-          </div>
-          <div class="experience-content">
-            <div class="experience-header">
-              <h3>Research Intern, Tencent IEG</h3>
-              <span class="experience-time">May 2026 - Late Sep. 2026</span>
-            </div>
-            <p class="experience-meta">Lightspeed Studios</p>
-          </div>
-        </article>
-
-        <article class="experience-card">
-          <div class="experience-logo" aria-label="Tencent Jarvis Lab">
-            <img class="experience-logo-tencent" src="log/tencent-wordmark.png" alt="Tencent">
-            <span class="experience-logo-divider" aria-hidden="true"></span>
-            <img class="experience-logo-unit experience-logo-jarvis" src="log/jarvis-lab.png" alt="Jarvis Lab">
+            <img src="assets/jarvis-lab.png" alt="Tencent Jarvis" class="experience-logo-unit experience-logo-jarvis" loading="lazy">
           </div>
           <div class="experience-content">
             <div class="experience-header">
               <h3>Research Intern, Tencent CSIG</h3>
-              <span class="experience-time">Aug. 2025 - May. 2026</span>
+              <span class="experience-time">Aug. 2025 – May 2026</span>
             </div>
-            <p class="experience-meta">Tencent Jarvis Lab</p>
+            <p class="experience-meta"><a href="https://jarvislab.tencent.com/index-en.html">Tencent Jarvis Research Center<span class="program-cn" lang="zh-CN">（腾讯天衍）</span></a></p>
+            <p class="experience-desc">Research on multimodal foundation models, agents, and world models.</p>
           </div>
         </article>
-
-        <article class="experience-card">
-          <div class="experience-logo" aria-label="Tencent Hunyuan">
-            <img class="experience-logo-tencent" src="log/tencent-wordmark.png" alt="Tencent">
-            <span class="experience-logo-divider" aria-hidden="true"></span>
-            <img class="experience-logo-unit experience-logo-hunyuan" src="log/hunyuan.png" alt="Tencent Hunyuan">
-          </div>
-          <div class="experience-content">
-            <div class="experience-header">
-              <h3>Research Intern, Tencent TEG</h3>
-              <span class="experience-time">Aug. 2023 - Jul. 2025</span>
-            </div>
-            <p class="experience-meta">Hunyuan Large Model</p>
-          </div>
-        </article>
-
-      </div>
-    </section>
+        <article class="experience-card"><div class="experience-logo"><img src="assets/tencent.png" alt="Tencent" class="experience-logo-tencent" loading="lazy"><span class="experience-logo-divider" aria-hidden="true"></span><img src="assets/hunyuan.png" alt="Hunyuan" class="experience-logo-unit" loading="lazy"></div><div class="experience-content"><div class="experience-header"><h3>Research Intern, Tencent TEG</h3><time class="experience-time">Aug. 2023 – Jul. 2025</time></div><p class="experience-meta">Hunyuan · USTC–Tencent Joint Training</p><p class="experience-desc">Efficient attention and reinforcement learning for visual modeling.</p></div></article></div></section>
 
     <section class="section-block">
       <div class="section-title-row">
         <h2>Research Collaboration</h2>
-        <span class="collaboration-badge">Weekly Meetings</span>
+        <span class="collaboration-badge">Research collaborations</span>
       </div>
       <div class="experience-grid">
         <article class="experience-card">
           <div class="experience-logo" aria-label="UC Merced and Google DeepMind">
-            <img class="experience-logo-ucm" src="log/uc-merced.png" alt="UC Merced">
+            <img class="experience-logo-ucm" src="assets/uc-merced.png" alt="UC Merced">
             <span class="experience-logo-divider" aria-hidden="true"></span>
-            <img class="experience-logo-deepmind" src="log/google-deepmind.svg" alt="Google DeepMind">
+            <img class="experience-logo-deepmind" src="assets/google-deepmind.svg" alt="Google DeepMind">
           </div>
           <div class="experience-content">
             <div class="experience-header">
@@ -273,7 +230,7 @@
               · UC Merced &amp; Google DeepMind
             </p>
             <p class="experience-desc">
-              Recent collaboration: <span class="experience-project-link" title="Project page coming soon">ReCAP</span>,
+              Recent collaboration: <a class="experience-project-link" href="https://alexander-wu.github.io/recap-project-page/">ReCAP</a>,
               efficient context scheduling for long-horizon video world models.
             </p>
           </div>
@@ -281,9 +238,9 @@
 
         <article class="experience-card">
           <div class="experience-logo experience-logo-partners" aria-label="HKUST and Boson AI">
-            <img class="experience-logo-hkust" src="log/hkust.svg" alt="Hong Kong University of Science and Technology">
+            <img class="experience-logo-hkust" src="assets/hkust.svg" alt="Hong Kong University of Science and Technology">
             <span class="experience-logo-divider" aria-hidden="true"></span>
-            <img class="experience-logo-boson" src="log/boson-ai.svg" alt="Boson AI">
+            <img class="experience-logo-boson" src="assets/boson-ai.svg" alt="Boson AI">
           </div>
           <div class="experience-content">
             <div class="experience-header">
@@ -304,118 +261,13 @@
       </div>
     </section>
 
-    <section id="publications" class="section-block">
-      <div class="section-title-row">
-        <h2>Selected Publications</h2>
-        <a
-          class="section-title-link"
-          href="https://scholar.google.com/citations?user=HdXMhfcAAAAJ&amp;hl=en"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <img src="Image/google-scholar.png" alt="" aria-hidden="true">
-          <span>Google Scholar</span>
-        </a>
-      </div>
-      <div class="paper-list">
-        <article class="paper-card paper-card-featured">
-          <div class="paper-thumb">
-            <img src="Image/Figure_R1.png" alt="Robot world model result gif">
-          </div>
-          <div class="paper-content">
-            <h3 class="paper-title">RoboAlign-R1: Distilled Multimodal Reward Alignment for Robot Video World Models</h3>
-            <div class="paper-authors">Hao Wu, Yuqi Li, Yuan Gao, Fan Xu, Fan Zhang, Kun Wang, Penghao Zhao, Qiufeng Wang, Yizhou Zhao, Weiyan Wang, Yingli Tian, Xian Wu, Xiaomeng Huang.
- <span class="paper-role">First Author</span></div>
-            <div class="paper-meta"><span class="paper-venue paper-venue-accepted">NeurIPS 2026</span></div>
-            <div class="paper-links">
-              <a class="paper-link" href="https://alexander-wu.github.io/roboalign-r1-pages/" target="_blank" rel="noreferrer">
-                <span class="paper-link-icon" aria-hidden="true">↗</span>
-                <span>Project Page</span>
-              </a>
-              <a class="paper-link" href="https://arxiv.org/pdf/2605.03821" target="_blank" rel="noreferrer">
-                <span class="paper-link-icon" aria-hidden="true">□</span>
-                <span>PDF</span>
-              </a>
-              <a class="paper-link" href="https://github.com/Alexander-wu/RoboAlign_R1" target="_blank" rel="noreferrer">
-                <span class="paper-link-icon" aria-hidden="true">⟨/⟩</span>
-                <span>Code</span>
-              </a>
-              <a class="paper-link" href="https://arxiv.org/bibtex/2605.03821" target="_blank" rel="noreferrer">
-                <span class="paper-link-icon" aria-hidden="true">“”</span>
-                <span>BibTeX</span>
-              </a>
-            </div>
-          </div>
-        </article>
+    <section id="research" class="section-block"><div class="section-title-row"><h2>Publications</h2><div class="publication-heading-tools"><label class="search-field"><span class="sr-only">Search publications</span><input id="paper-search" type="search" placeholder="Search papers, authors…"></label><a class="section-title-link" href="https://scholar.google.com/citations?user=HdXMhfcAAAAJ&amp;hl=en" target="_blank" rel="noreferrer">Google Scholar ↗</a></div></div><div class="research-toolbar"><div class="filters" id="research-filters" role="group" aria-label="Filter research by area"><button type="button" data-filter="selected" aria-pressed="true">Selected</button><button type="button" data-filter="all" aria-pressed="false">All papers</button><button type="button" data-filter="world" aria-pressed="false">World Models</button><button type="button" data-filter="sciml" aria-pressed="false">Scientific ML</button><button type="button" data-filter="earth" aria-pressed="false">Earth Systems</button><button type="button" data-filter="multimodal" aria-pressed="false">Multimodal &amp; Agents</button><button type="button" data-filter="safety" aria-pressed="false">RL &amp; Safety</button></div></div><div class="research-context"><p id="area-description"></p><span id="result-count" role="status" aria-live="polite"></span></div><div id="publications" class="paper-list"></div><button id="view-all" class="view-all" type="button">View all papers <span aria-hidden="true">↓</span></button></section>
 
-        <article class="paper-card">
-          <div class="paper-thumb">
-            <img src="Image/Safety-Aware.png" alt="Safety-aware rollouts paper figure">
-          </div>
-          <div class="paper-content">
-            <h3 class="paper-title">Safety-Aware Rollouts with Self-Reflection and Structured Rewards</h3>
-            <div class="paper-authors">Huahui Yi, Kun Wang, Haolong Hu, Moayad Aloqaily, Liang Lin, Junhao Dong, Qiankun Li, Xing Fan, Hao Wu, Yang Liu, and Qingsong Wen <span class="paper-role paper-role-corresponding"><span class="paper-role-icon" aria-hidden="true">↳</span>Corresponding Author</span></div>
-            <div class="paper-meta"><span class="paper-venue paper-venue-review">Under Review</span></div>
-            <div class="paper-links">
-              <a class="paper-link" href="https://arxiv.org/pdf/2510.06871" target="_blank" rel="noreferrer">
-                <span class="paper-link-icon" aria-hidden="true">□</span>
-                <span>PDF</span>
-              </a>
-              <a class="paper-link" href="https://github.com/HarveyYi/SaFeR-VLM" target="_blank" rel="noreferrer">
-                <span class="paper-link-icon" aria-hidden="true">⟨/⟩</span>
-                <span>Code</span>
-              </a>
-              <a class="paper-link" href="https://arxiv.org/bibtex/2510.06871" target="_blank" rel="noreferrer">
-                <span class="paper-link-icon" aria-hidden="true">“”</span>
-                <span>BibTeX</span>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <article class="paper-card">
-          <div class="paper-thumb paper-thumb-contain">
-            <img src="Image/Beamvq.png" alt="Metric-guided latent search framework for physical spatiotemporal forecasting">
-          </div>
-          <div class="paper-content">
-            <h3 class="paper-title">Metric-Guided Latent Search for Physical Spatiotemporal Forecasting</h3>
-            <div class="paper-authors"><a href="https://openreview.net/profile?id=~Hao_Wu39" target="_blank" rel="noreferrer">Hao Wu</a>, <a href="https://openreview.net/profile?id=~Xingjian_Shi1" target="_blank" rel="noreferrer">Xingjian Shi</a>, and <a href="https://openreview.net/profile?id=~Weiyan_Wang1" target="_blank" rel="noreferrer">Weiyan Wang</a> <span class="paper-role">First Author</span></div>
-            <div class="paper-meta"><span class="paper-venue paper-venue-review">Under Review</span></div>
-          </div>
-        </article>
-
-        <article class="paper-card">
-          <div class="paper-thumb">
-            <img src="papers/ICCV.png" alt="ICCV paper figure">
-          </div>
-          <div class="paper-content">
-            <h3 class="paper-title">Frequency-Aligned Knowledge Distillation for Lightweight Spatiotemporal Forecasting</h3>
-            <div class="paper-authors">Yuqi Li, Chuanguang Yang, Hansheng Zeng, Zeyu Dong, Zhulin An, Yongjun Xu, Yingli Tian, and Hao Wu <span class="paper-role paper-role-corresponding"><span class="paper-role-icon" aria-hidden="true">↳</span>Corresponding Author</span></div>
-            <div class="paper-meta"><span class="paper-venue paper-venue-accepted">ICCV 2025</span></div>
-            <div class="paper-links">
-              <a class="paper-link" href="https://openaccess.thecvf.com/content/ICCV2025/papers/Li_Frequency-Aligned_Knowledge_Distillation_for_Lightweight_Spatiotemporal_Forecasting_ICCV_2025_paper.pdf" target="_blank" rel="noreferrer">
-                <span class="paper-link-icon" aria-hidden="true">□</span>
-                <span>PDF</span>
-              </a>
-              <a class="paper-link" href="https://github.com/itsnotacie/SDKD" target="_blank" rel="noreferrer">
-                <span class="paper-link-icon" aria-hidden="true">⟨/⟩</span>
-                <span>Code</span>
-              </a>
-              <a class="paper-link" href="https://openaccess.thecvf.com/content/ICCV2025/html/Li_Frequency-Aligned_Knowledge_Distillation_for_Lightweight_Spatiotemporal_Forecasting_ICCV_2025_paper.html#bibtex" target="_blank" rel="noreferrer">
-                <span class="paper-link-icon" aria-hidden="true">“”</span>
-                <span>BibTeX</span>
-              </a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section id="service" class="section-block">
+<section id="service" class="section-block">
       <h2>Service</h2>
       <ul class="plain-list">
         <li><strong>Reviewer:</strong> ICLR, KDD, NeurIPS, ICCV, AAAI, TKDE, ICML, and ACM MM</li>
-        <li><strong>Research Areas:</strong> Multimodal large models, video world models, and agent systems</li>
+        <li><strong>Research Areas:</strong> World models, scientific machine learning, and multimodal agents</li>
       </ul>
     </section>
 
@@ -446,103 +298,42 @@
       </div>
     </section>
 
-    <section id="interests" class="section-block" aria-labelledby="interests-title">
-      <h2 id="interests-title">Interests</h2>
-      <div class="basketball-interest">
-        <div class="basketball-copy">
-          <h3>Basketball</h3>
-          <p>I make time for one to two hours of basketball most days. If you’re free, you’re always welcome to join me for a game!</p>
-          <p>My favorite moves are <strong>fadeaway jumpers</strong> and <strong>three-pointers</strong>. I’ve spent many happy hours playing at <strong>USTC’s Gaoxin Campus gym</strong>, the <strong>basketball gym at Tencent’s Beijing headquarters</strong>, and <strong>Tsinghua University’s Zijing courts</strong>.</p>
-        </div>
-        <figure class="basketball-video">
-          <video controls playsinline preload="metadata" poster="assets/videos/basketball-cropped-poster.jpg" width="708" height="438" aria-label="A short video of me playing basketball">
-            <source src="assets/videos/basketball-cropped.mp4" type="video/mp4">
-            Your browser does not support embedded video. <a href="assets/videos/basketball-cropped.mp4">Watch the basketball video</a>.
-          </video>
-          <figcaption>A little time on the court.</figcaption>
-        </figure>
-      </div>
-    </section>
+    <section id="interests" class="section-block"><h2>Beyond Research</h2><p class="interests-note">I enjoy basketball, especially fadeaway jumpers and three-pointers. Always happy to meet for a game!</p></section>
   </main>
 
-  <dialog class="wechat-dialog" id="wechat-dialog" aria-labelledby="wechat-dialog-title">
-    <div class="wechat-dialog-header">
-      <strong id="wechat-dialog-title">WeChat</strong>
-      <button class="wechat-dialog-close" type="button" aria-label="Close WeChat QR code">×</button>
+  <aside id="code-demo" role="dialog" aria-labelledby="code-demo-title" hidden>
+    <div class="code-demo-header">
+      <strong id="code-demo-title">Code world models</strong>
+      <button type="button" class="code-demo-close" aria-label="Close video">×</button>
     </div>
-    <img src="Image/97cc62909bcc8020f5f03c6bd597199a.jpg" alt="WeChat QR code for Alexander">
+    <video id="code-demo-video" width="1824" height="592" aria-label="Code world models demonstration" aria-describedby="code-demo-caption" controls muted playsinline preload="none" poster="assets/code-world-models-poster.webp" src="assets/code-world-models-demo.mp4"></video>
+    <p id="code-demo-caption">Structured scene inputs on the left, generated video on the right.</p>
+  </aside>
+
+  <dialog id="paper-figure-dialog" aria-labelledby="figure-heading" aria-describedby="figure-description">
+    <header class="figure-dialog-header">
+      <h2 id="figure-heading"></h2>
+      <form method="dialog"><button type="submit" aria-label="Close figure" autofocus>×</button></form>
+    </header>
+    <img id="figure-full" alt="">
+    <footer class="figure-dialog-caption">
+      <p id="figure-description"></p>
+      <a id="figure-source" target="_blank" rel="noopener noreferrer">View original paper ↗</a>
+    </footer>
   </dialog>
 
   <footer id="contact" class="site-footer">
     <div class="container footer-inner">
-      <div>Last updated: September 2026</div>
+      <div>Updated November 2026</div>
       <div>
         Contact:
-        <a href="mailto:wuhao2022@mail.ustc.edu.cn">wuhao2022@mail.ustc.edu.cn</a>
+        <a href="mailto:easylearninghao@gmail.com">easylearninghao@gmail.com</a>
         ·
         <a href="mailto:wu-h25@mails.tsinghua.edu.cn">wu-h25@mails.tsinghua.edu.cn</a>
       </div>
     </div>
   </footer>
 
-  <script>
-    (function () {
-      var btn = document.getElementById('theme-toggle');
-      if (!btn) return;
-      btn.addEventListener('click', function () {
-        var current = document.documentElement.getAttribute('data-theme');
-        var next = current === 'dark' ? 'light' : 'dark';
-        if (next === 'dark') {
-          document.documentElement.setAttribute('data-theme', 'dark');
-        } else {
-          document.documentElement.removeAttribute('data-theme');
-        }
-        try { localStorage.setItem('theme', next); } catch (e) {}
-      });
-    })();
-
-    (function () {
-      var count = document.getElementById('scholar-citation-count');
-      if (!count) return;
-
-      fetch('citation-data.json?ts=' + Date.now(), { cache: 'no-store' })
-        .then(function (response) {
-          if (!response.ok) throw new Error('Citation data request failed');
-          return response.json();
-        })
-        .then(function (data) {
-          if (data.scholar_id === 'HdXMhfcAAAAJ' && Number.isInteger(data.citations) && data.citations >= 0) {
-            count.textContent = data.citations.toLocaleString('en-US');
-            var updated = data.updated_at ? new Date(data.updated_at) : null;
-            if (updated && !isNaN(updated.getTime())) {
-              var stale = Date.now() - updated.getTime() > 48 * 60 * 60 * 1000;
-              count.parentElement.title = 'Last synced from Google Scholar: ' + updated.toLocaleString() +
-                (stale ? '. Sync delayed; click to view the source.' : '. Click to view Google Scholar.');
-            }
-          }
-        })
-        .catch(function () {
-          /* Keep the latest bundled citation count if the data file is unavailable. */
-        });
-    })();
-
-    (function () {
-      var trigger = document.getElementById('wechat-trigger');
-      var dialog = document.getElementById('wechat-dialog');
-      if (!trigger || !dialog) return;
-
-      trigger.addEventListener('click', function () {
-        dialog.showModal();
-      });
-
-      dialog.querySelector('.wechat-dialog-close').addEventListener('click', function () {
-        dialog.close();
-      });
-
-      dialog.addEventListener('click', function (event) {
-        if (event.target === dialog) dialog.close();
-      });
-    })();
-  </script>
+  
 </body>
 </html>
