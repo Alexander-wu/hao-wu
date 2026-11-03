@@ -1507,11 +1507,6 @@ html[data-theme="dark"] .job-market-banner strong {
   border-radius: 4px;
   background: #fff;
 }
-.bio-logo-ant {
-  width: 24px;
-  object-fit: cover;
-  object-position: left center;
-}
 .bio-logo-unit {
   width: auto;
   object-fit: contain;
