@@ -11,7 +11,7 @@ const AREA_DESCRIPTIONS = {
   multimodal: 'Understanding video, evaluating multimodal intelligence, and building agents.',
   safety: 'Policy improvement, reward learning, and safer behavior in generative systems.'
 };
-const FEATURE_ORDER = ['roboalign-r1', 'futureworlds', 'recap', 'tritoncast', 'prometheus', 'nmo'];
+const FEATURE_ORDER = ['roboalign-r1', 'futureworlds', 'recap', 'geoflip', 'tritoncast', 'prometheus', 'nmo'];
 let activeFilter = 'selected';
 const list = document.querySelector('#publications');
 const figureArea = document.querySelector('main');
@@ -22,7 +22,7 @@ const papers = window.PUBLICATIONS || [];
 const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
 const assetUrl = name => window.INLINE_ASSETS?.[name] || `assets/${name}`;
 const safeLink = url => /^https?:\/\//.test(url || '') ? escapeHtml(url) : '';
-const PAPER_ROLES = {tyche: 'Corresponding Author', oneforecast: 'Co-first Author', neuralom: 'Co-first Author', nuwadynamics: 'Co-first Author', 'frequency-distillation': 'Corresponding Author', 'open-ck': 'Corresponding Author'};
+const PAPER_ROLES = {geoflip: 'Corresponding Author', tyche: 'Corresponding Author', oneforecast: 'Co-first Author', neuralom: 'Co-first Author', nuwadynamics: 'Co-first Author', 'frequency-distillation': 'Corresponding Author', 'open-ck': 'Corresponding Author'};
 function authorsHtml(authors) {
   return escapeHtml(authors).replace(/\bHao Wu\b|\bH\. Wu\b/g, '<strong>$&</strong>');
 }
@@ -72,7 +72,7 @@ function paperHtml(paper) {
   const role = PAPER_ROLES[paper.id] || (paper.authors.startsWith('Hao Wu,') ? 'First Author' : '');
   const preprint = /preprint|review/i.test(paper.venue);
   const layout = paper.figure ? '' : 'paper-card-text';
-  return `<article class="paper-card ${paper.selected ? 'paper-card-featured' : ''} ${layout}">${figure}<div class="paper-content"><h3 class="paper-title">${title}</h3><p class="paper-authors" title="${escapeHtml(paper.authors)}">${authorsHtml(paper.authors)}</p><div class="paper-meta"><span class="paper-venue ${preprint ? 'paper-venue-review' : 'paper-venue-accepted'}">${escapeHtml(paper.venue)} ${paper.year}</span>${role ? `<span class="paper-role ${role === 'Corresponding Author' ? 'paper-role-corresponding' : ''}">${role}</span>` : ''}<span class="paper-area">${escapeHtml(AREA_LABELS[paper.areas[0]])}</span></div>${paper.description ? `<p class="paper-description">${escapeHtml(paper.description)}</p>` : ''}<div class="paper-links">${paperLinks}</div></div></article>`;
+  return `<article class="paper-card ${paper.selected ? 'paper-card-featured' : ''} ${layout}">${figure}<div class="paper-content"><h3 class="paper-title">${title}</h3><p class="paper-authors" title="${escapeHtml(paper.authors)}">${authorsHtml(paper.authors)}</p>${paper.authorNote ? `<small class="paper-author-note">${escapeHtml(paper.authorNote)}</small>` : ''}<div class="paper-meta"><span class="paper-venue ${preprint ? 'paper-venue-review' : 'paper-venue-accepted'}">${escapeHtml(paper.venue)} ${paper.year}</span>${role ? `<span class="paper-role ${role === 'Corresponding Author' ? 'paper-role-corresponding' : ''}">${role}</span>` : ''}<span class="paper-area">${escapeHtml(AREA_LABELS[paper.areas[0]])}</span></div>${paper.description ? `<p class="paper-description">${escapeHtml(paper.description)}</p>` : ''}<div class="paper-links">${paperLinks}</div></div></article>`;
 }
 function render() {
   hideFigurePreview();

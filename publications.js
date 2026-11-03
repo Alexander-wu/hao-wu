@@ -2,6 +2,20 @@
 // and linked primary sources. Preprints are not presented as accepted papers.
 window.PUBLICATIONS = [
   {
+    id: 'geoflip',
+    title: 'GeoFlip: Benchmarking Geometry-Sensitive Physics in Video Generation',
+    shortTitle: 'GeoFlip',
+    authors: 'Yuqi Li*, Junming Liu*, Bowen Hu, Ruize Niu, Huiran Duan, Ming-Hsuan Yang, Yingli Tian, Hao Wu',
+    authorNote: '* Equal contribution. Homepage author list updated since arXiv v1.',
+    year: 2026, venue: 'Preprint', areas: ['world'], selected: true,
+    tags: ['Video generation', 'Physical reasoning', 'Benchmark', 'Geometry'],
+    description: 'Does a video model know when a block will tip? GeoFlip tests 16 models on 482 pairs of scenes where changing the starting geometry flips the physical outcome while the prompt stays the same.',
+    figure: { number: 'Figure 2', width: 1600, height: 856,
+      description: 'GeoFlip pairs scenes with different overhangs or lever arms and compares the generated motion with the simulated outcome.',
+      source: 'https://arxiv.org/pdf/2610.42002v1#page=4' },
+    links: { paper: 'https://arxiv.org/abs/2610.42002' }
+  },
+  {
     id: 'rsi-survey',
     figure: { number: 'Figure 1', width: 1948, height: 1455,
       description: 'The upper loop carries changes in the task system into later tasks. In the dashed lower loop, accepted changes shape how the system proposes its next improvement.',
