@@ -345,9 +345,10 @@ if (window.RESEARCH_VISUALS) {
     topicPreview.hidden = false;
     topicPreview.style.maxHeight = '';
     const anchor = button.getBoundingClientRect();
+    const toolbar = button.parentElement.getBoundingClientRect();
     const topLimit = Math.max(12, document.querySelector('.site-header').getBoundingClientRect().bottom + 12);
-    const spaceAbove = Math.max(0, anchor.top - topLimit - 12);
-    const spaceBelow = Math.max(0, innerHeight - anchor.bottom - 24);
+    const spaceAbove = Math.max(0, toolbar.top - topLimit - 12);
+    const spaceBelow = Math.max(0, innerHeight - toolbar.bottom - 24);
     const naturalHeight = topicPreview.getBoundingClientRect().height;
     const above = spaceAbove >= naturalHeight || (spaceBelow < naturalHeight && spaceAbove > spaceBelow);
     const available = above ? spaceAbove : spaceBelow;
@@ -356,7 +357,7 @@ if (window.RESEARCH_VISUALS) {
     const size = topicPreview.getBoundingClientRect();
     const left = Math.max(12, Math.min(anchor.left + anchor.width / 2 - size.width / 2, innerWidth - size.width - 12));
     topicPreview.style.left = `${left}px`;
-    topicPreview.style.top = `${above ? anchor.top - size.height - 12 : anchor.bottom + 12}px`;
+    topicPreview.style.top = `${above ? toolbar.top - size.height - 12 : toolbar.bottom + 12}px`;
   }
 
   filterButtons.forEach(button => {
