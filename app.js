@@ -11,7 +11,7 @@ const AREA_DESCRIPTIONS = {
   multimodal: 'Understanding video, evaluating multimodal intelligence, and building agents.',
   safety: 'Policy improvement, reward learning, and safer behavior in generative systems.'
 };
-const FEATURE_ORDER = ['geoflip', 'roboalign-r1', 'futureworlds', 'recap', 'tritoncast', 'prometheus', 'nmo'];
+const FEATURE_ORDER = ['roboimagine', 'geoflip', 'roboalign-r1', 'futureworlds', 'recap', 'tritoncast', 'prometheus', 'nmo'];
 let activeFilter = 'selected';
 const list = document.querySelector('#publications');
 const figureArea = document.querySelector('main');
@@ -68,9 +68,9 @@ function paperHtml(paper) {
   const linkAttrs = ' target="_blank" rel="noopener noreferrer"';
   const figure = figureThumbnail(paper);
   const title = primaryLink ? `<a href="${safeLink(primaryLink)}"${linkAttrs}>${escapeHtml(paper.title)}</a>` : escapeHtml(paper.title);
-  const paperLinks = Object.entries({ paper: 'Paper', project: 'Project Page', code: 'Code' }).filter(([key]) => links[key]).map(([key, label]) => `<a class="paper-link" href="${safeLink(links[key])}"${linkAttrs}>${label} ↗</a>`).join('');
+  const paperLinks = Object.entries({ paper: 'Paper', project: 'Project Page', code: 'Code', data: 'Data & Weights' }).filter(([key]) => links[key]).map(([key, label]) => `<a class="paper-link" href="${safeLink(links[key])}"${linkAttrs}>${label} ↗</a>`).join('');
   const role = PAPER_ROLES[paper.id] || (paper.authors.startsWith('Hao Wu,') ? 'First Author' : '');
-  const preprint = /preprint|review/i.test(paper.venue);
+  const preprint = /preprint|review|manuscript/i.test(paper.venue);
   const layout = paper.figure ? '' : 'paper-card-text';
   return `<article class="paper-card ${paper.selected ? 'paper-card-featured' : ''} ${layout}">${figure}<div class="paper-content"><h3 class="paper-title">${title}</h3><p class="paper-authors" title="${escapeHtml(paper.authors)}">${authorsHtml(paper.authors)}</p>${paper.authorNote ? `<small class="paper-author-note">${escapeHtml(paper.authorNote)}</small>` : ''}<div class="paper-meta"><span class="paper-venue ${preprint ? 'paper-venue-review' : 'paper-venue-accepted'}">${escapeHtml(paper.venue)} ${paper.year}</span>${role ? `<span class="paper-role ${role === 'Corresponding Author' ? 'paper-role-corresponding' : ''}">${role}</span>` : ''}<span class="paper-area">${escapeHtml(AREA_LABELS[paper.areas[0]])}</span></div>${paper.description ? `<p class="paper-description">${escapeHtml(paper.description)}</p>` : ''}<div class="paper-links">${paperLinks}</div></div></article>`;
 }
@@ -201,6 +201,7 @@ figureArea.addEventListener('click', event => {
   figureDialog.querySelector('#figure-heading').textContent = `${paper.shortTitle} · ${figure.number}`;
   figureDialog.querySelector('#figure-description').textContent = figure.description;
   figureDialog.querySelector('#figure-source').href = figure.source;
+  figureDialog.querySelector('#figure-source').textContent = figure.sourceLabel || 'View original paper ↗';
   figureDialog.showModal();
 });
 figureDialog.addEventListener('click', event => {

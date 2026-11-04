@@ -2,6 +2,20 @@
 // and linked primary sources. Preprints are not presented as accepted papers.
 window.PUBLICATIONS = [
   {
+    id: 'roboimagine',
+    title: 'Learning Robotic World Models with Semantic and Visual Feedback',
+    shortTitle: 'RoboImagine',
+    authors: 'Hao Wu, Yuqi Li, Yizhou Zhao, Kun Wang, Xiao Luo, Yu Cheng, Bo An, Yingli Tian, Laszlo A. Jeni, Ming-Hsuan Yang#',
+    authorNote: '# Corresponding author: Ming-Hsuan Yang.',
+    year: 2026, venue: 'Manuscript', areas: ['world', 'safety'], selected: true,
+    tags: ['RoboImagine', 'Autoregressive world models', 'Semantic and visual feedback', 'Group-diverse beam search', 'Reinforcement learning'],
+    description: 'Post-training autoregressive robot world models with diverse candidate futures and complementary semantic and visual feedback.',
+    figure: { number: 'Search strategies', width: 1540, height: 538,
+      description: 'Comparison of frame-wise MCTS, ordinary token-wise beam search, and group-diverse beam search (GDBS) with an overlap penalty.',
+      source: 'https://github.com/Alexander-wu/RoboImagine', sourceLabel: 'View project ↗' },
+    links: { code: 'https://github.com/Alexander-wu/RoboImagine', data: 'https://huggingface.co/easylearning/RoboImagine' }
+  },
+  {
     id: 'geoflip',
     title: 'GeoFlip: Benchmarking Geometry-Sensitive Physics in Video Generation',
     shortTitle: 'GeoFlip',
