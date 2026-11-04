@@ -11,7 +11,7 @@ const AREA_DESCRIPTIONS = {
   multimodal: 'Understanding video, evaluating multimodal intelligence, and building agents.',
   safety: 'Policy improvement, reward learning, and safer behavior in generative systems.'
 };
-const FEATURE_ORDER = ['roboalign-r1', 'futureworlds', 'recap', 'geoflip', 'tritoncast', 'prometheus', 'nmo'];
+const FEATURE_ORDER = ['geoflip', 'roboalign-r1', 'futureworlds', 'recap', 'tritoncast', 'prometheus', 'nmo'];
 let activeFilter = 'selected';
 const list = document.querySelector('#publications');
 const figureArea = document.querySelector('main');
