@@ -305,3 +305,92 @@ demoPanel.addEventListener('focusout', event => {
 window.addEventListener('resize', placeDemo);
 window.addEventListener('scroll', placeDemo, { passive: true });
 document.addEventListener('visibilitychange', () => { if (document.hidden) hideDemo(); });
+
+// Topic artwork is decorative. The existing buttons still control paper filters.
+if (window.RESEARCH_VISUALS) {
+  const topicPreview = document.createElement('div');
+  topicPreview.className = 'topic-preview';
+  topicPreview.setAttribute('aria-hidden', 'true');
+  topicPreview.hidden = true;
+  document.body.append(topicPreview);
+  let topicOwner = null;
+  let topicHideTimer;
+  let topicPinned = false;
+
+  function hideTopicPreview() {
+    clearTimeout(topicHideTimer);
+    topicPreview.hidden = true;
+    topicOwner = null;
+    topicPinned = false;
+  }
+
+  function scheduleTopicHide() {
+    clearTimeout(topicHideTimer);
+    topicHideTimer = setTimeout(() => {
+      if (topicPinned || topicPreview.matches(':hover') || topicOwner?.matches(':hover, :focus-visible')) return;
+      hideTopicPreview();
+    }, 160);
+  }
+
+  function showTopicPreview(button, pinned = false) {
+    clearTimeout(topicHideTimer);
+    const visual = window.RESEARCH_VISUALS[button.dataset.filter];
+    if (topicOwner !== button || topicPreview.hidden) {
+      topicPreview.innerHTML = `<div class="topic-preview-art">${visual.scene}</div>
+        <div class="topic-preview-copy"><strong>${escapeHtml(visual.label)}</strong>
+        <span>${escapeHtml(visual.caption)}</span></div>`;
+    }
+    topicOwner = button;
+    topicPinned = pinned;
+    topicPreview.hidden = false;
+    topicPreview.style.maxHeight = '';
+    const anchor = button.getBoundingClientRect();
+    const topLimit = Math.max(12, document.querySelector('.site-header').getBoundingClientRect().bottom + 12);
+    const spaceAbove = Math.max(0, anchor.top - topLimit - 12);
+    const spaceBelow = Math.max(0, innerHeight - anchor.bottom - 24);
+    const naturalHeight = topicPreview.getBoundingClientRect().height;
+    const above = spaceAbove >= naturalHeight || (spaceBelow < naturalHeight && spaceAbove > spaceBelow);
+    const available = above ? spaceAbove : spaceBelow;
+    if (available < 110) { hideTopicPreview(); return; }
+    topicPreview.style.maxHeight = `${available}px`;
+    const size = topicPreview.getBoundingClientRect();
+    const left = Math.max(12, Math.min(anchor.left + anchor.width / 2 - size.width / 2, innerWidth - size.width - 12));
+    topicPreview.style.left = `${left}px`;
+    topicPreview.style.top = `${above ? anchor.top - size.height - 12 : anchor.bottom + 12}px`;
+  }
+
+  filterButtons.forEach(button => {
+    const visual = window.RESEARCH_VISUALS[button.dataset.filter];
+    const icon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    icon.setAttribute('viewBox', '0 0 24 24');
+    icon.setAttribute('aria-hidden', 'true');
+    icon.setAttribute('focusable', 'false');
+    icon.setAttribute('class', 'topic-icon');
+    icon.innerHTML = visual.icon;
+    button.prepend(icon);
+    button.addEventListener('pointerenter', event => {
+      if (event.pointerType !== 'touch') showTopicPreview(button);
+    });
+    button.addEventListener('pointerleave', scheduleTopicHide);
+    button.addEventListener('focus', () => {
+      if (button.matches(':focus-visible')) showTopicPreview(button);
+    });
+    button.addEventListener('blur', scheduleTopicHide);
+    button.addEventListener('pointerdown', event => {
+      if (event.pointerType === 'touch') showTopicPreview(button, true);
+    });
+  });
+  topicPreview.addEventListener('pointerenter', () => clearTimeout(topicHideTimer));
+  topicPreview.addEventListener('pointerleave', scheduleTopicHide);
+  document.addEventListener('pointerdown', event => {
+    if (!topicPreview.hidden && !topicPreview.contains(event.target) && !event.target.closest('[data-filter]')) hideTopicPreview();
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') hideTopicPreview();
+  });
+  window.addEventListener('scroll', hideTopicPreview, { passive: true });
+  window.addEventListener('resize', hideTopicPreview);
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) hideTopicPreview();
+  });
+}
