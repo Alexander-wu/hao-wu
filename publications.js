@@ -60,7 +60,7 @@ window.PUBLICATIONS = [
     shortTitle: 'FutureWorlds',
     authors: 'Hao Wu, Shengju Qian, Weiyan Wang, Fan Xu, Fan Zhang, Yuanpeng He, Qingsong Wen, Yuxuan Liang',
     year: 2026, venue: 'Preprint', areas: ['world', 'safety'],
-    tags: ['Autoregressive models', 'Alternative futures', 'Reinforcement learning'], selected: true,
+    tags: ['Autoregressive models', 'Alternative futures', 'Reinforcement learning'], selected: false,
     description: 'Learning action-conditioned robot video models from alternative futures with memory-aware reinforcement learning.',
     links: { paper: 'https://arxiv.org/abs/2610.01019' }
   },
@@ -71,7 +71,7 @@ window.PUBLICATIONS = [
     shortTitle: 'ReCAP',
     authors: 'Hao Wu, Tianyu Shao, Shengju Qian, Yizhou Zhao, Fan Zhang, Penghao Zhao, Weiyan Wang, Yufei Huang, Fan Xu, Kun Wang, Xin Wang, Ming-Hsuan Yang, Yuxuan Liang',
     year: 2026, venue: 'Preprint', areas: ['world'],
-    tags: ['Long-horizon prediction', 'Memory', 'Context scheduling'], selected: true,
+    tags: ['Long-horizon prediction', 'Memory', 'Context scheduling'], selected: false,
     description: 'Preserving initial anchors and recent context for efficient long-horizon prediction with frozen world models.',
     links: { paper: 'https://arxiv.org/abs/2610.14583', project: 'https://alexander-wu.github.io/recap-project-page/' }
   },
@@ -140,7 +140,7 @@ window.PUBLICATIONS = [
     shortTitle: 'PnP-Corrector',
     authors: 'Hao Wu, Fan Xu, Yuxu Lu, Penghao Zhao, Fan Zhang, Hao Jia, Yuxuan Liang, Ruijian Gou, Qingsong Wen, Xian Wu, Xiaomeng Huang, Yuan Gao',
     year: 2026, venue: 'ICML', areas: ['earth', 'sciml'],
-    tags: ['Coupled systems', 'Model correction', 'Spatiotemporal forecasting'], selected: false,
+    tags: ['Coupled systems', 'Model correction', 'Spatiotemporal forecasting'], selected: true,
     description: 'Learning corrections for coupled spatiotemporal forecasting without retraining the underlying simulators.',
     links: { paper: 'https://arxiv.org/abs/2605.08935' }
   },
