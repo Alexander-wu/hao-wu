@@ -1,4 +1,11 @@
 {
+  "paper-figures/weathercraft.webp": {
+    "number": "Architecture",
+    "source": "Author-provided weathercraft_architecture.pdf, supplied by Hao Wu on 2026-11-18.",
+    "description": "Complete original WeatherCraft architecture figure, rendered from the supplied PDF without cropping or redrawing.",
+    "width": 2200,
+    "height": 1012
+  },
   "paper-figures/roboimagine.webp": {
     "number": "Search strategies",
     "source": "Figure supplied by Hao Wu for Learning Robotic World Models with Semantic and Visual Feedback.",

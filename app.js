@@ -11,7 +11,7 @@ const AREA_DESCRIPTIONS = {
   multimodal: 'Understanding video, evaluating multimodal intelligence, and building agents.',
   safety: 'Policy improvement, reward learning, and safer behavior in generative systems.'
 };
-const FEATURE_ORDER = ['roboimagine', 'geoflip', 'roboalign-r1', 'pnp-corrector', 'tritoncast', 'prometheus', 'nmo'];
+const FEATURE_ORDER = ['weathercraft', 'roboimagine', 'geoflip', 'roboalign-r1', 'pnp-corrector', 'tritoncast', 'prometheus', 'nmo'];
 let activeFilter = 'selected';
 const list = document.querySelector('#publications');
 const figureArea = document.querySelector('main');
@@ -22,7 +22,7 @@ const papers = window.PUBLICATIONS || [];
 const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
 const assetUrl = name => window.INLINE_ASSETS?.[name] || `assets/${name}`;
 const safeLink = url => /^https?:\/\//.test(url || '') ? escapeHtml(url) : '';
-const PAPER_ROLES = {geoflip: 'Corresponding Author', tyche: 'Corresponding Author', oneforecast: 'Co-first Author', neuralom: 'Co-first Author', nuwadynamics: 'Co-first Author', 'frequency-distillation': 'Corresponding Author', 'open-ck': 'Corresponding Author'};
+const PAPER_ROLES = {weathercraft: 'Corresponding Author', geoflip: 'Corresponding Author', tyche: 'Corresponding Author', oneforecast: 'Co-first Author', neuralom: 'Co-first Author', nuwadynamics: 'Co-first Author', 'frequency-distillation': 'Corresponding Author', 'open-ck': 'Corresponding Author'};
 function authorsHtml(authors) {
   return escapeHtml(authors).replace(/\bHao Wu\b|\bH\. Wu\b/g, '<strong>$&</strong>');
 }
@@ -200,8 +200,11 @@ figureArea.addEventListener('click', event => {
   dialogRotation.textContent = rotationLabel();
   figureDialog.querySelector('#figure-heading').textContent = `${paper.shortTitle} · ${figure.number}`;
   figureDialog.querySelector('#figure-description').textContent = figure.description;
-  figureDialog.querySelector('#figure-source').href = figure.source;
-  figureDialog.querySelector('#figure-source').textContent = figure.sourceLabel || 'View original paper ↗';
+  const sourceLink = figureDialog.querySelector('#figure-source');
+  sourceLink.hidden = !safeLink(figure.source);
+  if (sourceLink.hidden) sourceLink.removeAttribute('href');
+  else sourceLink.href = figure.source;
+  sourceLink.textContent = figure.sourceLabel || 'View original paper ↗';
   figureDialog.showModal();
 });
 figureDialog.addEventListener('click', event => {

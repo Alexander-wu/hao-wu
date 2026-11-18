@@ -2,6 +2,19 @@
 // and linked primary sources. Preprints are not presented as accepted papers.
 window.PUBLICATIONS = [
   {
+    id: 'weathercraft',
+    title: 'Reinforcement-Aligned Probabilistic Weather Forecasting with Discrete Tokens',
+    shortTitle: 'WeatherCraft',
+    authors: 'Jinhan Li, Zhisheng Chen†, Yuxuan Li, Yuan Gao, Fan Xu, Hao Wu†, Jinlong Du, Kun Wang',
+    authorNote: '† Corresponding authors: Zhisheng Chen and Hao Wu.',
+    year: 2026, venue: 'Manuscript', areas: ['earth', 'sciml', 'safety'], selected: true,
+    tags: ['Weather forecasting', 'Discrete tokens', 'Reinforcement learning', 'Ensemble prediction'],
+    description: 'Discrete weather tokens enable probabilistic ensemble forecasting and reinforcement-learning alignment with downstream weather and ocean objectives.',
+    figure: { number: 'Architecture', width: 2200, height: 1012,
+      description: 'WeatherCraft combines multiscale weather tokenization, causal token dynamics, and ensemble decoding with two-stage pre-training, KV-cached rollout, and task-aligned reinforcement learning.' },
+    links: {}
+  },
+  {
     id: 'roboimagine',
     title: 'Learning Robotic World Models with Semantic and Visual Feedback',
     shortTitle: 'RoboImagine',
