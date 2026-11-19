@@ -342,5 +342,13 @@
     "width": 1195,
     "height": 400,
     "crop": "Figure 6, printed page 3364 (PDF page 9), top row. PDF crop (53, 82, 292, 162) pt rendered at 5×; original headings and color scales retained."
+  },
+  "favicon-cmu.png": {
+    "source": "Color CMU seal supplied by Hao Wu on 2026-11-19 (codex-clipboard-bc17dc89-2ce6-4315-99b4-52be675a1406.webp).",
+    "description": "Browser favicon converted from the user-supplied image; complete seal, colors, proportions, and transparency preserved."
+  },
+  "favicon-cmu.ico": {
+    "source": "Color CMU seal supplied by Hao Wu on 2026-11-19 (codex-clipboard-bc17dc89-2ce6-4315-99b4-52be675a1406.webp).",
+    "description": "Browser favicon converted from the user-supplied image; complete seal, colors, proportions, and transparency preserved."
   }
 }
