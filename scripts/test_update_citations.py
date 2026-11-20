@@ -50,6 +50,22 @@ class CitationTests(unittest.TestCase):
                 updater.save_citations(root, 'HdXMhfcAAAAJ', 1550)
             self.assertEqual((root / 'citation-data.json').read_text(), 'previous data')
 
+    def test_refresh_updates_count_and_timestamp_together(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / 'index.html').write_text(
+                '<a class="citation-counter" href="https://scholar.google.com/" title="old snapshot">'
+                '<strong id="scholar-citation-count" data-updated-at="2026-09-24T00:00:00+00:00">1,550</strong></a>')
+            timestamp = '2026-11-20T02:23:00+00:00'
+            updater.save_citations(root, 'HdXMhfcAAAAJ', 1841, updated_at=timestamp)
+            html = (root / 'index.html').read_text()
+            self.assertIn('>1,841</strong>', html)
+            self.assertEqual(html.count('data-updated-at='), 1)
+            self.assertIn('data-updated-at="' + timestamp + '"', html)
+            self.assertIn('Last successful update: 2026-11-20 02:23:00 UTC', html)
+            self.assertNotIn('old snapshot', html)
+            self.assertEqual(json.loads((root / 'citation-data.json').read_text())['updated_at'], timestamp)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -63,18 +63,28 @@ def fetch_citations(scholar_id):
             time.sleep(5 * (attempt + 1))
 
 
-def save_citations(root, scholar_id, citations):
+def save_citations(root, scholar_id, citations, updated_at=None):
     if type(citations) is not int or citations < 0:
         raise ValueError("Invalid citation count")
-    now = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    now = updated_at or datetime.now(timezone.utc).isoformat(timespec="seconds")
     data = {"scholar_id": scholar_id, "citations": citations, "updated_at": now}
     index = root / "index.html"
+    def render_counter(match):
+        opening = re.sub(r'\sdata-updated-at="[^"]*"', '', match[1])
+        opening = opening[:-1] + f' data-updated-at="{now}">'
+        return opening + format(citations, ",") + match[2]
+
     html, replacements = re.subn(
         r'(<strong id="scholar-citation-count"[^>]*>)[^<]*(</strong>)',
-        lambda m: m[1] + format(citations, ",") + m[2], index.read_text(encoding="utf-8"),
+        render_counter, index.read_text(encoding="utf-8"),
     )
     if replacements != 1:
         raise ValueError("Expected exactly one citation counter in index.html")
+    title = "Google Scholar citations · Last successful update: " + now.replace("T", " ").replace("+00:00", " UTC")
+    def render_badge(match):
+        opening = re.sub(r'\stitle="[^"]*"', '', match[0])
+        return opening[:-1] + f' title="{title}">'
+    html = re.sub(r'<a\b[^>]*class="citation-counter"[^>]*>', render_badge, html)
     # Build both outputs before writing, including the no-JavaScript fallback.
     output = root / "citation-data.json"
     temp = output.with_suffix(".json.tmp")
@@ -86,7 +96,8 @@ def save_citations(root, scholar_id, citations):
 def main():
     scholar_id = os.environ.get("GOOGLE_SCHOLAR_ID", "HdXMhfcAAAAJ")
     citations = fetch_citations(scholar_id)
-    save_citations(ROOT, scholar_id, citations)
+    root = Path(os.environ.get("CITATION_SITE_ROOT", ROOT))
+    save_citations(root, scholar_id, citations)
     print(f"Google Scholar citations: {citations}")
 
 
