@@ -29,12 +29,12 @@
     "height": 1455
   },
   "code-world-models-demo.mp4": {
-    "source": "Author-provided Interaction_Demos (2).mp4",
-    "description": "Full-length web encode of the original silent interaction demo (42.5 seconds)."
+    "source": "Author-provided FastCWM_CVPR2027_Supplementary_Video_CVPR.mp4",
+    "description": "Complete FastCWM supplementary video (4 min 59 sec), encoded for web playback at 1280×720, 24 fps, H.264 with AAC stereo audio and MP4 fast start. Original content and audio retained."
   },
   "code-world-models-poster.webp": {
     "source": "code-world-models-demo.mp4",
-    "description": "Driving example from the interaction demo, at 1.75 seconds."
+    "description": "FastCWM overview/title frame, at 2 seconds."
   },
   "portrait.webp": {
     "source": "https://raw.githubusercontent.com/Alexander-wu/hao-wu/main/Image/hw_new.jpg",
