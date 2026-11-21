@@ -356,5 +356,9 @@
     "description": "Official OpenReview web application icon, displayed without modification.",
     "width": 192,
     "height": 192
+  },
+  "favicon-hw.svg": {
+    "source": "Original HW monogram created for Hao Wu on 2026-11-21.",
+    "description": "Personal red and white initials; no university name or seal."
   }
 }
