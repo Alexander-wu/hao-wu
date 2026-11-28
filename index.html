@@ -18,22 +18,26 @@
   </script>
   <link rel="stylesheet" href="styles.css?v=20261105-topics">
   <link rel="stylesheet" href="theme-redblack.css?v=20261121-color-only">
+  <link rel="stylesheet" href="homepage-layout.css?v=20261128">
   <link rel="icon" href="assets/favicon-cmu.ico?v=20261121-restored" sizes="any">
   <link rel="icon" href="assets/favicon-cmu.png?v=20261121-restored" type="image/png" sizes="256x256">
   <script src="scholar-citations.js?v=20261120" defer></script>
-  <script src="publications.js?v=20261118-weathercraft" defer></script><script src="research-visuals.js?v=20261105-topics" defer></script><script src="app.js?v=20261118-weathercraft" defer></script>
+  <script src="publications.js?v=20261118-weathercraft" defer></script><script src="research-visuals.js?v=20261105-topics" defer></script><script src="app.js?v=20261128" defer></script>
 </head>
 <body><a class="skip-link" href="#research">Skip to publications</a>
   <header class="site-header">
     <div class="container header-inner">
       <a href="#about" class="site-title">Hao Wu</a>
-      <nav class="site-nav">
+      <nav class="site-nav" id="primary-nav" aria-label="Main navigation">
         <a href="#about">Home</a>
         <a href="#research">Publications</a>
+        <a href="#news">News</a>
         <a href="#experience">Experience</a>
         <a href="#service">Service</a>
-        <a href="#news">News</a>
         <a href="#contact">Contact</a>
+
+      </nav>
+      <div class="header-actions">
         <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
           <span class="theme-toggle-icon theme-toggle-sun" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -47,7 +51,8 @@
             </svg>
           </span>
         </button>
-      </nav>
+        <button id="nav-toggle" type="button" aria-controls="primary-nav" aria-expanded="false">Menu</button>
+      </div>
     </div>
   </header>
 
@@ -57,10 +62,24 @@
         <div class="hero-top">
           <div class="hero-main">
             <div class="profile-heading">
+              <p class="profile-kicker">World models · Multimodal learning · Scientific ML</p>
               <h1>Hao Wu <span class="name-cn" lang="zh">吴昊</span></h1>
             </div>
 
-            <div class="link-grid">
+        <div class="hero-body">
+          <p>I am currently an <strong>Assistant Researcher (Intern)</strong> at <span class="bio-affiliation"><img class="bio-logo bio-logo-unit" src="assets/ant.png" alt=""> <strong>Ant Group</strong></span>, focusing on large language models, recursive self-improvement, and computer vision.</p>
+          <p>I also explore memory, reward learning, and <button type="button" class="bio-demo-trigger" id="code-demo-trigger" aria-label="Watch the code world models demo" aria-haspopup="dialog" aria-controls="code-demo" aria-expanded="false">code world models</button>.</p>
+          <p>My 2026 first-author papers include <a href="https://alexander-wu.github.io/roboalign-r1-pages/">RoboAlign-R1</a> (<strong>NeurIPS</strong>) on reward learning for robot video prediction, <a href="https://arxiv.org/abs/2605.08935">PnP-Corrector</a> (<strong>ICML</strong>) on correcting forecasts of coupled systems, and <a href="https://doi.org/10.1145/3770855.3818015">DINO</a> (<strong>KDD</strong>) on long-term turbulence forecasting.</p>
+          <p>I held research internships at
+            <span class="bio-affiliation"><img class="bio-logo bio-logo-unit bio-logo-lightspeed" src="assets/lightspeed.png" alt=""> <strong>Tencent Lightspeed Studios</strong></span>,
+            <span class="bio-affiliation"><img class="bio-logo bio-logo-unit" src="assets/jarvis-lab.png" alt=""> <strong>Tencent Jarvis Research Center</strong></span>, and
+            <span class="bio-affiliation"><img class="bio-logo bio-logo-unit" src="assets/hunyuan.png" alt=""> <strong>Tencent Hunyuan</strong></span>.</p>
+          <details class="venue-details"><summary>Publication venues</summary><dl class="bio-venues" aria-label="Publication venues">
+            <div><dt>Conferences</dt><dd>NeurIPS, ICML, ICLR, KDD, ICCV, ACL, AAAI, ACM Multimedia, and ECML PKDD.</dd></div>
+            <div><dt>Journals</dt><dd>IEEE TPAMI, IEEE TKDE, IEEE TEVC, <i>Neurocomputing</i>, and <i>Geophysical Research Letters</i>.</dd></div>
+          </dl></details>
+        </div>
+            <div class="link-grid" aria-label="Academic profiles">
               <a class="info-link" href="https://www.linkedin.com/in/hao-wu-a31986316/" target="_blank" rel="noreferrer" aria-label="LinkedIn" title="LinkedIn">
                 <span class="info-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -93,38 +112,32 @@
                 </span>
               </a>
             </div>
+
+          </div>
+          <aside class="profile-aside" aria-label="Profile photo and citations">
+          <div class="profile-photo-wrap">
+            <img class="profile-photo" src="assets/hao-wu-portrait.png" alt="Portrait of Hao Wu" width="521" height="692" fetchpriority="high">
+          </div>
             <a class="citation-counter" href="https://scholar.google.com/citations?user=HdXMhfcAAAAJ&amp;hl=en" target="_blank" rel="noreferrer" title="Google Scholar citations · Last successful update: 2026-11-28 02:53:03 UTC">
               <span class="citation-counter-label">Google Scholar Citations</span>
               <strong id="scholar-citation-count" aria-live="polite" data-updated-at="2026-11-28T02:53:03+00:00">1,898</strong>
             </a>
-          </div>
-          <div class="profile-photo-wrap">
-            <img class="profile-photo" src="assets/hao-wu-portrait.png" alt="Portrait of Hao Wu" width="521" height="692">
-          </div>
+          </aside>
         </div>
 
-        <div class="hero-body">
-          <p>I am currently an <strong>Assistant Researcher (Intern)</strong> at <span class="bio-affiliation"><img class="bio-logo bio-logo-unit" src="assets/ant.png" alt=""> <strong>Ant Group</strong></span>, focusing on large language models, recursive self-improvement, and computer vision.</p>
-          <p>I also explore memory, reward learning, and <button type="button" class="bio-demo-trigger" id="code-demo-trigger" aria-label="Watch the code world models demo" aria-haspopup="dialog" aria-controls="code-demo" aria-expanded="false">code world models</button>.</p>
-          <p>My 2026 first-author papers include <a href="https://alexander-wu.github.io/roboalign-r1-pages/">RoboAlign-R1</a> (<strong>NeurIPS</strong>) on reward learning for robot video prediction, <a href="https://arxiv.org/abs/2605.08935">PnP-Corrector</a> (<strong>ICML</strong>) on correcting forecasts of coupled systems, and <a href="https://doi.org/10.1145/3770855.3818015">DINO</a> (<strong>KDD</strong>) on long-term turbulence forecasting.</p>
-          <p>I held research internships at
-            <span class="bio-affiliation"><img class="bio-logo bio-logo-unit bio-logo-lightspeed" src="assets/lightspeed.png" alt=""> <strong>Tencent Lightspeed Studios</strong></span>,
-            <span class="bio-affiliation"><img class="bio-logo bio-logo-unit" src="assets/jarvis-lab.png" alt=""> <strong>Tencent Jarvis Research Center</strong></span>, and
-            <span class="bio-affiliation"><img class="bio-logo bio-logo-unit" src="assets/hunyuan.png" alt=""> <strong>Tencent Hunyuan</strong></span>.</p>
-          <dl class="bio-venues" aria-label="Publication venues">
-            <div><dt>Conferences</dt><dd>NeurIPS, ICML, ICLR, KDD, ICCV, ACL, AAAI, ACM Multimedia, and ECML PKDD.</dd></div>
-            <div><dt>Journals</dt><dd>IEEE TPAMI, IEEE TKDE, IEEE TEVC, <i>Neurocomputing</i>, and <i>Geophysical Research Letters</i>.</dd></div>
-          </dl>
-        </div>
+
       </div>
+      <p class="collaboration-invite">I’m open to research collaborations. If you’d like to work together, please <a href="mailto:easylearninghao@gmail.com">email me</a>.</p>
     </section>
 
+    <section id="research" class="section-block"><div class="section-title-row"><h2><span class="heading-accent">Research</span> &amp; Publications</h2><div class="publication-heading-tools"><label class="search-field"><span class="sr-only">Search publications</span><input id="paper-search" type="search" placeholder="Search papers, authors…"></label><a class="section-title-link" href="https://scholar.google.com/citations?user=HdXMhfcAAAAJ&amp;hl=en" target="_blank" rel="noreferrer">Google Scholar</a></div></div><div class="research-toolbar"><div class="filters" id="research-filters" role="group" aria-label="Filter research by area"><button type="button" data-filter="selected" aria-pressed="true">Selected</button><button type="button" data-filter="all" aria-pressed="false">All papers</button><button type="button" data-filter="world" aria-pressed="false">World Models</button><button type="button" data-filter="sciml" aria-pressed="false">Scientific ML</button><button type="button" data-filter="earth" aria-pressed="false">Earth Systems</button><button type="button" data-filter="multimodal" aria-pressed="false">Multimodal &amp; Agents</button><button type="button" data-filter="safety" aria-pressed="false">RL &amp; Safety</button></div></div><div class="research-context"><p id="area-description"></p><span id="result-count" role="status" aria-live="polite"></span></div><div id="publications" class="paper-list"></div><noscript><p>View my <a href="https://scholar.google.com/citations?user=HdXMhfcAAAAJ&amp;hl=en">publications on Google Scholar</a>.</p></noscript><button id="view-all" class="view-all" type="button">View all papers</button></section>
+
     <section id="news" class="section-block">
-      <p class="collaboration-invite">I’m open to research collaborations. If you’d like to work together, please <a href="mailto:easylearninghao@gmail.com">email me</a>.</p>
+
       <div class="news-panel">
-        <div class="news-heading"><h2>News</h2></div>
+        <div class="news-heading"><h2><span class="heading-accent">Latest</span> News</h2></div>
         <div class="news-window">
-          <div class="news-list">
+          <div class="news-list" id="news-list">
             <div class="news-item news-item-featured">
               <time class="news-date" datetime="2026-10">2026.10</time>
               <div class="news-text">We released <a href="https://www.preprints.org/manuscript/202609.2680" data-preview-figure="rsi-survey">Recursive Self-Improvement in AI: A Survey</a>. The survey examines how to test whether AI systems get better at improving themselves.</div>
@@ -203,10 +216,11 @@
             </div>
           </div>
         </div>
+        <button id="news-toggle" class="text-toggle" type="button" aria-controls="news-list" aria-expanded="false" hidden>Show all updates</button>
       </div>
     </section>
 
-    <section id="experience" class="section-block"><h2>Research Experience</h2><div class="experience-grid">
+    <section id="experience" class="section-block"><h2><span class="heading-accent">Research</span> Experience</h2><div class="experience-grid">
         <article class="experience-card">
           <div class="experience-logo">
             <img src="assets/ant.png" alt="Ant Research · 蚂蚁技术研究院" class="experience-logo-single" loading="lazy">
@@ -241,8 +255,8 @@
 
     <section class="section-block">
       <div class="section-title-row">
-        <h2>Close Research Collaborations</h2>
-        <span class="collaboration-badge">Research collaborations</span>
+        <h2><span class="heading-accent">Close</span> Research Collaborations</h2>
+        
       </div>
       <div class="experience-grid">
         <article class="experience-card">
@@ -292,7 +306,7 @@
       </div>
     </section>
 
-    <section id="research" class="section-block"><div class="section-title-row"><h2>Publications</h2><div class="publication-heading-tools"><label class="search-field"><span class="sr-only">Search publications</span><input id="paper-search" type="search" placeholder="Search papers, authors…"></label><a class="section-title-link" href="https://scholar.google.com/citations?user=HdXMhfcAAAAJ&amp;hl=en" target="_blank" rel="noreferrer">Google Scholar ↗</a></div></div><div class="research-toolbar"><div class="filters" id="research-filters" role="group" aria-label="Filter research by area"><button type="button" data-filter="selected" aria-pressed="true">Selected</button><button type="button" data-filter="all" aria-pressed="false">All papers</button><button type="button" data-filter="world" aria-pressed="false">World Models</button><button type="button" data-filter="sciml" aria-pressed="false">Scientific ML</button><button type="button" data-filter="earth" aria-pressed="false">Earth Systems</button><button type="button" data-filter="multimodal" aria-pressed="false">Multimodal &amp; Agents</button><button type="button" data-filter="safety" aria-pressed="false">RL &amp; Safety</button></div></div><div class="research-context"><p id="area-description"></p><span id="result-count" role="status" aria-live="polite"></span></div><div id="publications" class="paper-list"></div><button id="view-all" class="view-all" type="button">View all papers <span aria-hidden="true">↓</span></button></section>
+
 
 <section id="service" class="section-block">
       <h2>Service</h2>
@@ -303,7 +317,7 @@
     </section>
 
     <section id="awards" class="section-block">
-      <h2>Selected Awards &amp; Honors</h2>
+      <h2><span class="heading-accent">Selected</span> Awards &amp; Honors</h2>
       <div class="awards-grid">
         <article class="award-card">
           <div class="award-year">2025</div>
@@ -329,7 +343,7 @@
       </div>
     </section>
 
-    <section id="interests" class="section-block"><h2>Beyond Research</h2><p class="interests-note">I enjoy basketball, especially fadeaway jumpers and three-pointers. Always happy to meet for a game!</p></section>
+    <section id="interests" class="section-block"><h2><span class="heading-accent">Beyond</span> Research</h2><p class="interests-note">I enjoy basketball, especially fadeaway jumpers and three-pointers. Always happy to meet for a game!</p></section>
   </main>
 
   <aside id="code-demo" role="dialog" aria-labelledby="code-demo-title" hidden>
@@ -349,13 +363,13 @@
     <img id="figure-full" alt="">
     <footer class="figure-dialog-caption">
       <p id="figure-description"></p>
-      <a id="figure-source" target="_blank" rel="noopener noreferrer">View original paper ↗</a>
+      <a id="figure-source" target="_blank" rel="noopener noreferrer">View original paper</a>
     </footer>
   </dialog>
 
   <footer id="contact" class="site-footer">
     <div class="container footer-inner">
-      <div>Updated November 2026</div>
+      <div>Hao Wu · Updated November 2026</div>
       <div>
         Contact:
         <a href="mailto:easylearninghao@gmail.com">easylearninghao@gmail.com</a>

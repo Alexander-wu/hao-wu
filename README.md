@@ -2,48 +2,37 @@
 
 Website: https://alexander-wu.github.io/hao-wu/
 
-Repository: https://github.com/Alexander-wu/hao-wu
+Static HTML, CSS, and JavaScript, published from this repository's `main` branch through `.github/workflows/pages.yml`.
 
-Assets and downloads use relative URLs to support this project-site path.
+## Source layout
 
-This is a static academic homepage that can be deployed directly on GitHub Pages, Netlify, or Vercel.
+- `index.html`: profile, navigation, news, experience, and contact information.
+- `publications.js`: publication metadata and figures. Selected ordering is in `app.js`.
+- `styles.css`: original typography and base components.
+- `theme-redblack.css`: red, black, and white theme, including dark mode.
+- `homepage-layout.css`: reading-focused layout, responsive navigation, publication rows, and heading accents.
+- `app.js`: filters, search, author/news disclosures, theme switch, and media controls.
+- `assets/`: existing research media, profile image, and CMU seal favicon.
 
-## Deploy on GitHub Pages
+The original font is retained. Names, author lists, dates, and author-role labels use the text color; red marks heading accents and interactive states. Publications follow the introduction. Historical news and full author lists remain available through disclosure controls. Videos start on explicit activation.
 
-1. Create a GitHub repository.
-2. Upload all files in this directory to the repository root.
-3. Go to `Settings` -> `Pages`.
-4. Set source to `Deploy from a branch`.
-5. Choose branch `main` and folder `/root`.
-6. Save and wait for the site to publish.
+## Preview
 
-## Notes
+Run `python3 -m http.server 8765 --bind 127.0.0.1` from the repository root, then open http://127.0.0.1:8765/.
 
-- Keep `index.html` in the repository root.
-- Keep folders such as `Image/`, `papers/`, `log/`, and `assets/` unchanged so relative paths continue to work.
-- Replace the GitHub button link in `index.html` once the final GitHub profile URL is confirmed.
+## Publishing and citation updates
 
-## Google Scholar citations
+Every push to `main` deploys the site through GitHub Actions. The workflow also attempts a Google Scholar refresh daily at 02:23 UTC and on manual dispatch. Blocked responses preserve the previous successful count and timestamp.
 
-The homepage reads `citation-data.json`. `scripts/update_citations.py` fetches
-this profile's all-time count using the Python standard library, with bounded
-retries and timeouts. A successful fetch updates both JSON and the HTML fallback.
-The badge tooltip shows the last successful fetch time; after 48 hours it flags
-the data as delayed. Blocked responses preserve the previous data and timestamp.
+`citation-data.json` provides the current citation snapshot. `scholar-citations.js` updates the displayed count from it. `scripts/update_citations.py` updates the JSON and HTML fallback together. Preserve the `citation-counter` anchor and `strong` element beginning with `id="scholar-citation-count"`, because the updater matches that markup.
 
-Pages uses **GitHub Actions** as its publishing source. Every push explicitly
-deploys the site. The manual **Run workflow** action also attempts a Scholar
-refresh before deploying, and reports a failure if Google blocks the request.
+The owner's local backup is managed separately and patches the latest remote HTML rather than replacing it with a local snapshot. Before publishing source changes, check remote `main` again to avoid overwriting a newer citation update.
 
-On 2026-09-25, fetching succeeded on the owner's Mac (1,550 citations) but
-Google returned HTTP 403 to GitHub-hosted runners. Cloud scheduling is therefore
-not enabled. The optional `scripts/sync_citations_local.sh` supports a dedicated
-local clone via `CITATION_SYNC_DIR`, using existing `gh` authentication. Installing
-a local six-hour timer requires the owner's confirmation; the Mac must be awake
-and online. The helper refuses to overwrite tracked local changes.
-
-Run checks with:
+Basic checks:
 
 ```sh
-python -m unittest discover -s scripts -p 'test_*.py'
+node --check app.js
+python3 -m unittest discover -s scripts -p 'test_*.py'
 ```
+
+Assets and downloads use relative URLs to support the `/hao-wu/` project-site path. Keep publication metadata and historical source files when making visual changes.

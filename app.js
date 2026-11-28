@@ -55,8 +55,8 @@ function figureThumbnail(paper) {
   const stageClass = second ? 'paper-gallery-stage paper-gallery-stage-pair' : 'paper-gallery-stage';
   const rotate = paper === globePaper ? `<button type="button" class="globe-rotation">${rotationLabel()}</button>` : '';
   const caption = second
-    ? figureControl(paper, figure, `Method · ${figure.number} ↗`) + figureControl(paper, second, `Result · ${second.number.split(' (')[0]} ↗`)
-    : `<span class="figure-caption">${escapeHtml(figure.preview?.label || figure.number)}</span>${rotate}${figureControl(paper, figure, 'Enlarge ↗')}`;
+    ? figureControl(paper, figure, `Method · ${figure.number}`) + figureControl(paper, second, `Result · ${second.number.split(' (')[0]}`)
+    : `<span class="figure-caption">${escapeHtml(figure.preview?.label || figure.number)}</span>${rotate}${figureControl(paper, figure, 'Enlarge')}`;
   return `<div class="paper-gallery">
     <div class="${stageClass}">${stage}</div>
     <div class="paper-gallery-footer">${caption}</div>
@@ -68,11 +68,14 @@ function paperHtml(paper) {
   const linkAttrs = ' target="_blank" rel="noopener noreferrer"';
   const figure = figureThumbnail(paper);
   const title = primaryLink ? `<a href="${safeLink(primaryLink)}"${linkAttrs}>${escapeHtml(paper.title)}</a>` : escapeHtml(paper.title);
-  const paperLinks = Object.entries({ paper: 'Paper', project: 'Project Page', code: 'Code', data: 'Data & Weights' }).filter(([key]) => links[key]).map(([key, label]) => `<a class="paper-link" href="${safeLink(links[key])}"${linkAttrs}>${label} ↗</a>`).join('');
+  const paperLinks = Object.entries({ paper: 'Paper', project: 'Project Page', code: 'Code', data: 'Data & Weights' }).filter(([key]) => links[key]).map(([key, label]) => `<a class="paper-link" href="${safeLink(links[key])}"${linkAttrs}>${label}</a>`).join('');
   const role = PAPER_ROLES[paper.id] || (paper.authors.startsWith('Hao Wu,') ? 'First Author' : '');
   const preprint = /preprint|review|manuscript/i.test(paper.venue);
   const layout = paper.figure ? '' : 'paper-card-text';
-  return `<article class="paper-card ${paper.selected ? 'paper-card-featured' : ''} ${layout}">${figure}<div class="paper-content"><h3 class="paper-title">${title}</h3><p class="paper-authors" title="${escapeHtml(paper.authors)}">${authorsHtml(paper.authors)}</p>${paper.authorNote ? `<small class="paper-author-note">${escapeHtml(paper.authorNote)}</small>` : ''}<div class="paper-meta"><span class="paper-venue ${preprint ? 'paper-venue-review' : 'paper-venue-accepted'}">${escapeHtml(paper.venue)} ${paper.year}</span>${role ? `<span class="paper-role ${role === 'Corresponding Author' ? 'paper-role-corresponding' : ''}">${role}</span>` : ''}<span class="paper-area">${escapeHtml(AREA_LABELS[paper.areas[0]])}</span></div>${paper.description ? `<p class="paper-description">${escapeHtml(paper.description)}</p>` : ''}<div class="paper-links">${paperLinks}</div></div></article>`;
+  const collapseAuthors = paper.authors.length > 180;
+  const authorsId = `authors-${escapeHtml(paper.id)}`;
+  const authorsToggle = collapseAuthors ? `<button type="button" class="authors-toggle" aria-controls="${authorsId}" aria-expanded="false">Show all authors</button>` : '';
+  return `<article class="paper-card ${paper.selected ? 'paper-card-featured' : ''} ${layout}">${figure}<div class="paper-content"><h3 class="paper-title">${title}</h3><p id="${authorsId}" class="paper-authors${collapseAuthors ? ' authors-collapsed' : ''}" title="${escapeHtml(paper.authors)}">${authorsHtml(paper.authors)}</p>${authorsToggle}${paper.authorNote ? `<small class="paper-author-note">${escapeHtml(paper.authorNote)}</small>` : ''}<div class="paper-meta"><span class="paper-venue ${preprint ? 'paper-venue-review' : 'paper-venue-accepted'}">${escapeHtml(paper.venue)} ${paper.year}</span>${role ? `<span class="paper-role ${role === 'Corresponding Author' ? 'paper-role-corresponding' : ''}">${role}</span>` : ''}<span class="paper-area">${escapeHtml(AREA_LABELS[paper.areas[0]])}</span></div>${paper.description ? `<p class="paper-description">${escapeHtml(paper.description)}</p>` : ''}<div class="paper-links">${paperLinks}</div></div></article>`;
 }
 function render() {
   hideFigurePreview();
@@ -92,6 +95,16 @@ function render() {
   document.querySelector('#reset-search')?.addEventListener('click', () => { search.value = ''; setFilter('all'); });
 }
 function setFilter(filter) { activeFilter = filter; render(); }
+list.addEventListener('click', event => {
+  const button = event.target.closest('.authors-toggle');
+  if (!button) return;
+  const authors = document.getElementById(button.getAttribute('aria-controls'));
+  if (!authors) return;
+  const expanded = button.getAttribute('aria-expanded') !== 'true';
+  authors.classList.toggle('authors-collapsed', !expanded);
+  button.setAttribute('aria-expanded', String(expanded));
+  button.textContent = expanded ? 'Show fewer authors' : 'Show all authors';
+});
 const figureDialog = document.querySelector('#paper-figure-dialog');
 const dialogRotation = document.createElement('button');
 dialogRotation.type = 'button';
@@ -204,17 +217,60 @@ figureArea.addEventListener('click', event => {
   sourceLink.hidden = !safeLink(figure.source);
   if (sourceLink.hidden) sourceLink.removeAttribute('href');
   else sourceLink.href = figure.source;
-  sourceLink.textContent = figure.sourceLabel || 'View original paper ↗';
+  sourceLink.textContent = (figure.sourceLabel || 'View original paper').replace(/\s*[↗→←↘↖↙↑↓]+\s*$/, '');
   figureDialog.showModal();
 });
 figureDialog.addEventListener('click', event => {
   if (event.target === figureDialog) figureDialog.close();
 });
-allButton.firstChild.textContent = `View all ${papers.length} papers `;
+allButton.textContent = `View all ${papers.length} papers`;
 filterButtons.forEach(button => button.addEventListener('click', () => setFilter(button.dataset.filter)));
 search.addEventListener('input', render);
 allButton.addEventListener('click', () => { setFilter('all'); document.querySelector('#research').scrollIntoView({ behavior: 'smooth' }); });
 render();
+
+const siteHeader = document.querySelector('.site-header');
+const navToggle = document.querySelector('#nav-toggle');
+const primaryNav = document.querySelector('#primary-nav');
+const mobileNav = window.matchMedia('(max-width: 720px)');
+if (siteHeader && navToggle && primaryNav) {
+  function setNavOpen(open, restoreFocus = false) {
+    const expanded = open && mobileNav.matches;
+    siteHeader.classList.toggle('nav-open', expanded);
+    navToggle.setAttribute('aria-expanded', String(expanded));
+    if (restoreFocus) navToggle.focus({ preventScroll: true });
+  }
+  navToggle.addEventListener('click', () => {
+    setNavOpen(navToggle.getAttribute('aria-expanded') !== 'true');
+  });
+  primaryNav.addEventListener('click', event => {
+    if (event.target.closest('a')) setNavOpen(false);
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && siteHeader.classList.contains('nav-open')) setNavOpen(false, true);
+  });
+  document.addEventListener('pointerdown', event => {
+    if (!siteHeader.contains(event.target)) setNavOpen(false);
+  });
+  mobileNav.addEventListener('change', () => setNavOpen(false));
+  setNavOpen(false);
+  siteHeader.classList.add('nav-ready');
+}
+
+const newsToggle = document.querySelector('#news-toggle');
+const newsList = document.querySelector('#news-list');
+if (newsToggle && newsList) {
+  const olderUpdates = [...newsList.querySelectorAll('.news-item')].slice(3);
+  function setNewsExpanded(expanded) {
+    if (!expanded && olderUpdates.some(item => item.contains(document.activeElement))) newsToggle.focus({ preventScroll: true });
+    olderUpdates.forEach(item => { item.hidden = !expanded; });
+    newsToggle.setAttribute('aria-expanded', String(expanded));
+    newsToggle.textContent = expanded ? 'Show fewer updates' : 'Show all updates';
+  }
+  setNewsExpanded(false);
+  newsToggle.hidden = olderUpdates.length === 0;
+  newsToggle.addEventListener('click', () => setNewsExpanded(newsToggle.getAttribute('aria-expanded') !== 'true'));
+}
 
 const themeToggle = document.querySelector('#theme-toggle');
 function syncThemeLabel() {
@@ -261,8 +317,7 @@ function showDemo(pin = false) {
   demoPanel.hidden = false;
   demoTrigger.setAttribute('aria-expanded', 'true');
   placeDemo();
-  if (!demoPanel.hidden && (pin || !reducedMotion.matches)) {
-    if (!pin) demoVideo.muted = true;
+  if (!demoPanel.hidden && pin) {
     demoVideo.play().catch(() => {}); // Native play controls remain available when autoplay is blocked.
   }
 }
@@ -319,24 +374,22 @@ if (window.RESEARCH_VISUALS) {
   document.body.append(topicPreview);
   let topicOwner = null;
   let topicHideTimer;
-  let topicPinned = false;
 
   function hideTopicPreview() {
     clearTimeout(topicHideTimer);
     topicPreview.hidden = true;
     topicOwner = null;
-    topicPinned = false;
   }
 
   function scheduleTopicHide() {
     clearTimeout(topicHideTimer);
     topicHideTimer = setTimeout(() => {
-      if (topicPinned || topicPreview.matches(':hover') || topicOwner?.matches(':hover, :focus-visible')) return;
+      if (topicPreview.matches(':hover') || topicOwner?.matches(':hover, :focus-visible')) return;
       hideTopicPreview();
     }, 160);
   }
 
-  function showTopicPreview(button, pinned = false) {
+  function showTopicPreview(button) {
     clearTimeout(topicHideTimer);
     const visual = window.RESEARCH_VISUALS[button.dataset.filter];
     if (topicOwner !== button || topicPreview.hidden) {
@@ -345,7 +398,6 @@ if (window.RESEARCH_VISUALS) {
         <span>${escapeHtml(visual.caption)}</span></div>`;
     }
     topicOwner = button;
-    topicPinned = pinned;
     topicPreview.hidden = false;
     topicPreview.style.maxHeight = '';
     const anchor = button.getBoundingClientRect();
@@ -374,21 +426,18 @@ if (window.RESEARCH_VISUALS) {
     icon.innerHTML = visual.icon;
     button.prepend(icon);
     button.addEventListener('pointerenter', event => {
-      if (event.pointerType !== 'touch') showTopicPreview(button);
+      if (canHover.matches && event.pointerType !== 'touch') showTopicPreview(button);
     });
     button.addEventListener('pointerleave', scheduleTopicHide);
     button.addEventListener('focus', () => {
       if (button.matches(':focus-visible')) showTopicPreview(button);
     });
     button.addEventListener('blur', scheduleTopicHide);
-    button.addEventListener('pointerdown', event => {
-      if (event.pointerType === 'touch') showTopicPreview(button, true);
-    });
   });
   topicPreview.addEventListener('pointerenter', () => clearTimeout(topicHideTimer));
   topicPreview.addEventListener('pointerleave', scheduleTopicHide);
   document.addEventListener('pointerdown', event => {
-    if (!topicPreview.hidden && !topicPreview.contains(event.target) && !event.target.closest('[data-filter]')) hideTopicPreview();
+    if (event.pointerType === 'touch' || (!topicPreview.hidden && !topicPreview.contains(event.target) && !event.target.closest('[data-filter]'))) hideTopicPreview();
   });
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape') hideTopicPreview();
