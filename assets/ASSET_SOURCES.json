@@ -360,5 +360,12 @@
   "favicon-hw.svg": {
     "source": "Original HW monogram created for Hao Wu on 2026-11-21.",
     "description": "Personal red and white initials; no university name or seal."
+  },
+  "favicon-cmu-red.png": {
+    "source": "https://live-cmu-brand.pantheonsite.io/sites/default/files/cmu-brand-files/inline-images/visual-identity-seal-05_0.png",
+    "source_page": "https://brand.cmu.edu/visual-identity/carnegie-mellon-trademarks/university-seal",
+    "description": "Red CMU seal, reused from the existing academic CV asset at the author’s request. Original PNG unchanged.",
+    "width": 521,
+    "height": 563
   }
 }
